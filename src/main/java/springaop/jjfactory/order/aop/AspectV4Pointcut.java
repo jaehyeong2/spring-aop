@@ -8,21 +8,15 @@ import org.aspectj.lang.annotation.Pointcut;
 
 @Slf4j
 @Aspect
-public class AspectV3 {
+public class AspectV4Pointcut {
 
-    @Pointcut("execution(* springaop.jjfactory.order..*(..))")
-    private void allOrder(){}
-
-    @Pointcut("execution(* *..*Service..*(..))")
-    private void allService(){}
-
-    @Around("allOrder()")
+    @Around("springaop.jjfactory.order.aop.Pointcuts.allOrder()")
     public Object doLog(ProceedingJoinPoint joinPoint) throws Throwable{
         log.info("[Log] {}",joinPoint.getSignature());
         return joinPoint.proceed();
     }
 
-    @Around("allOrder() && allService()")
+    @Around("springaop.jjfactory.order.aop.Pointcuts.orderAndService()")
     public Object doTransaction(ProceedingJoinPoint joinPoint) throws Throwable{
         try {
             log.info("[log] 트랜잭션 시작 {}",joinPoint.getSignature());

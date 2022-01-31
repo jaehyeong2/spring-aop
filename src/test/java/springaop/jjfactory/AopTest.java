@@ -10,11 +10,13 @@ import springaop.jjfactory.order.OrderRepository;
 import springaop.jjfactory.order.OrderService;
 import springaop.jjfactory.order.aop.AspectV1;
 import springaop.jjfactory.order.aop.AspectV2;
+import springaop.jjfactory.order.aop.AspectV5Order;
 
 @Slf4j
 @SpringBootApplication
 //@Import(AspectV1.class)
-@Import(AspectV2.class)
+//@Import(AspectV2.class)
+@Import({AspectV5Order.LogAspect.class, AspectV5Order.TxAspect.class})
 public class AopTest {
 
     @Autowired
